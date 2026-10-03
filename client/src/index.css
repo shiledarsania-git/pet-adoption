@@ -1,0 +1,45 @@
+/* CSS controls how things LOOK. Variables (--name) let us change the colour theme in one place. */
+:root {
+  --bg: #eef3f1;        /* page background: pale sage */
+  --ink: #1f2a2e;       /* main text colour: deep slate */
+  --teal: #0f7b6c;      /* main accent: buttons, links */
+  --amber: #e8a33d;     /* "Pending" colour */
+  --red: #b3372e;       /* errors */
+  --card: #ffffff;      /* card background */
+}
+* { box-sizing: border-box; }                       /* padding does not enlarge elements */
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.5; }
+h1, h2, h3, nav, button, .badge { font-family: "Trebuchet MS", system-ui, sans-serif; }
+a { color: var(--teal); }
+.topbar { display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; background: var(--ink); }
+.topbar a { color: #fff; text-decoration: none; margin-left: 18px; }
+.topbar a.active { border-bottom: 2px solid var(--amber); }   /* NavLink adds "active" to the current page */
+.brand { font-size: 1.4rem; font-weight: bold; margin-left: 0 !important; }
+.container { max-width: 1000px; margin: 0 auto; padding: 24px 16px 60px; }
+.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+input, select, textarea { padding: 10px; border: 1px solid #b9c7c3; border-radius: 6px; font: inherit; background: #fff; }
+button { padding: 10px 16px; border: 0; border-radius: 6px; background: var(--teal); color: #fff; cursor: pointer; }
+button.secondary { background: #6b7c80; }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--amber); }  /* visible keyboard focus */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }  /* responsive columns */
+.card { display: block; background: var(--card); border-radius: 10px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid #d5dfdc; }
+.card img, .noimg { width: 100%; height: 170px; object-fit: cover; }
+.noimg { display: flex; align-items: center; justify-content: center; background: #dfe7e5; color: #6b7c80; }
+.card-body { padding: 12px 14px 16px; }
+.card-body h3 { margin: 0 0 4px; }
+.card-body p { margin: 2px 0; }
+.muted { color: #5d6e72; }
+.badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .8rem; color: #fff; background: #6b7c80; }
+.badge.available, .badge.approved { background: var(--teal); }
+.badge.pending { background: var(--amber); color: var(--ink); }
+.badge.rejected, .badge.adopted { background: #6b7c80; }
+.detail { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 16px 0 28px; }
+.detail img, .detail .noimg { height: 340px; border-radius: 10px; }
+dl { display: grid; grid-template-columns: 90px 1fr; gap: 4px 10px; }
+dt { font-weight: bold; } dd { margin: 0; }
+.form { display: flex; flex-direction: column; gap: 10px; background: var(--card); padding: 18px; border-radius: 10px; max-width: 520px; border: 1px solid #d5dfdc; }
+.form.inline { max-width: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.error { color: var(--red); } .ok { color: var(--teal); }
+.table .row { display: flex; justify-content: space-between; gap: 12px; align-items: center; background: var(--card); padding: 12px 16px; border-radius: 8px; margin-bottom: 8px; border: 1px solid #d5dfdc; }
+.actions { display: flex; gap: 8px; align-items: center; }
+@media (max-width: 700px) { .detail { grid-template-columns: 1fr; } .table .row { flex-direction: column; align-items: flex-start; } }  /* phones */
